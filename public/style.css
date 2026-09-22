@@ -32,6 +32,12 @@
     color: rgb(31, 170, 180) !important;
 }
 
+.answer-wrapper{
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
 .mirror-q {
     display: inline-block;
     transform: scaleX(-1);
