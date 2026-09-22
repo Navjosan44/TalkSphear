@@ -21,7 +21,11 @@ session_start();
         include('./client/login.php');
 
     }elseif(isset($_GET['ask'])){
+
        include('./client/ask.php');
+    
+    }else {
+        include('./client/questions.php');
     }
      
 ?>
