@@ -15,7 +15,7 @@ if (isset($_POST['signup'])) {
     ");
     $result = $user->execute();
     if ($result) {
-        $_SESSION['user'] = ["username" => $username,"email" => $email,"user_id"=>$user->insert_id];
+        $_SESSION['user'] = ["username" => $username, "email" => $email, "user_id" => $user->insert_id];
         header("location: /TalkSphere");
     } else {
         echo "User not registered";
@@ -27,7 +27,7 @@ if (isset($_POST['signup'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $username = "";
-    $user_id= 0;
+    $user_id = 0;
     $query = "select * from users where email='$email' and password='$password'";
     $result = $conn->query($query);
     if ($result->num_rows == 1) {
@@ -36,7 +36,7 @@ if (isset($_POST['signup'])) {
             $user_id = $row['id'];
         }
         // echo $username;
-        $_SESSION['user'] = ["username" => $username, "email" => $email, "user_id"=>$user_id];
+        $_SESSION['user'] = ["username" => $username, "email" => $email, "user_id" => $user_id];
         header("location: /TalkSphere");
     } else {
         echo "User not registered";
@@ -51,16 +51,18 @@ if (isset($_POST['signup'])) {
 
 
     //ask questions
-}  elseif (isset($_POST["ask"])){
+} elseif (isset($_POST["ask"])) {
 
     $title = $_POST['title'];
     $description = $_POST['description'];
     $category_id = $_POST['category'];
     $user_id = $_SESSION['user']['user_id'];
+
     $question = $conn->prepare("Insert into `questions`
     (`id`,`title`,`description`,`category_id`,`user_id`)
     values(NULL,'$title','$description','$category_id','$user_id');
     ");
+
     $result = $question->execute();
     $question->insert_id;
     if ($result) {
@@ -70,5 +72,21 @@ if (isset($_POST['signup'])) {
     }
 
 
+} elseif (isset($_POST['answer'])) {
+    $answer = $_POST['answer'];
+    $question_id = $_POST['question_id'];
+    $user_id = $_SESSION['user']['user_id'];
 
+    $query = $conn->prepare("Insert into `answers`
+    (`id`,`answer`,`question_id`,`user_id`)
+    values(NULL,'$answer','$question_id','$user_id');
+    ");
+
+    $result = $query->execute();
+
+    if ($result) {
+        header("location: /TalkSphere?q-id=$question_id");
+    } else {
+        echo "Answer not submited";
+    }
 }

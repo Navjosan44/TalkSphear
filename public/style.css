@@ -3,19 +3,36 @@
 } */
 
 .navbar .nav-link {
-    color: blue !important;
+    color: hwb(177 2% 35%) !important;
+
 }
 
-.heading{
+.heading {
     text-align: center;
 }
 
-.margin-bottom-15{
+.margin-bottom-15 {
     margin-bottom: 15px;
 }
 
-.question-list{
+.question-list {
     border: 1px solid #ddd;
-     padding: 15px;
-      margin: 10px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.question-list h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.question-list a, .question-title {
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(31, 170, 180) !important;
+}
+
+.mirror-q {
+    display: inline-block;
+    transform: scaleX(-1);
 }
