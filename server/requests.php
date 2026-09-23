@@ -16,7 +16,7 @@ if (isset($_POST['signup'])) {
     $result = $user->execute();
     if ($result) {
         $_SESSION['user'] = ["username" => $username, "email" => $email, "user_id" => $user->insert_id];
-        header("location: /TalkSphere");
+        header("location: /QSphere");
     } else {
         echo "User not registered";
     }
@@ -37,7 +37,7 @@ if (isset($_POST['signup'])) {
         }
         // echo $username;
         $_SESSION['user'] = ["username" => $username, "email" => $email, "user_id" => $user_id];
-        header("location: /TalkSphere");
+        header("location: /QSphere");
     } else {
         echo "User not registered";
     }
@@ -47,7 +47,7 @@ if (isset($_POST['signup'])) {
 } elseif (isset($_GET['logout'])) {
     session_unset();
     // session_destroy();
-    header("location: /TalkSphere");
+    header("location: /QSphere");
 
 
     //ask questions
@@ -66,12 +66,12 @@ if (isset($_POST['signup'])) {
     $result = $question->execute();
     $question->insert_id;
     if ($result) {
-        header("location: /TalkSphere");
+        header("location: /QSphere");
     } else {
         echo "Question not added";
     }
 
-
+    // answer
 } elseif (isset($_POST['answer'])) {
     $answer = $_POST['answer'];
     $question_id = $_POST['question_id'];
@@ -85,7 +85,7 @@ if (isset($_POST['signup'])) {
     $result = $query->execute();
 
     if ($result) {
-        header("location: /TalkSphere?q-id=$question_id");
+        header("location: /QSphere?q-id=$question_id");
     } else {
         echo "Answer not submited";
     }

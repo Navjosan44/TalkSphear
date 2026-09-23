@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="heading">Ask A Question</h1>
+    <h1 class="heading">Ask A <span class="mirror-q">Q</span>uestion</h1>
 
     <form action="./server/requests.php" method="post">
 
