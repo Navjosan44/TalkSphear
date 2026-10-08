@@ -89,4 +89,13 @@ if (isset($_POST['signup'])) {
     } else {
         echo "Answer not submited";
     }
+} elseif(isset($_GET['delete'])){
+    $qid = $_GET['delete'];
+    $query = $conn->prepare("DELETE FROM `questions` WHERE `id` = '$qid'");
+    $result = $query->execute();
+    if($result){
+        header("location: /QSphere");
+    } else {
+        echo "Question Not Deleted";
+    }
 }

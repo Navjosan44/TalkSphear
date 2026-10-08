@@ -3,7 +3,7 @@
 } */
 
 .navbar .nav-link {
-    color: hwb(177 2% 35%) !important;
+    color: hwb(229 6% 13%) !important;
 
 }
 
@@ -41,4 +41,9 @@
 .mirror-q {
     display: inline-block;
     transform: scaleX(-1);
+}
+
+.my-question{
+    display: flex;
+    justify-content: space-between;
 }
